@@ -1,10 +1,11 @@
 package com.superleague3.airdistancecalculator.Controller;
 
-import com.superleague3.airdistancecalculator.DistanceCalculation.Haversine;
+import com.superleague3.airdistancecalculator.Service.Haversine;
 import com.superleague3.airdistancecalculator.POJOs.GeocodingAPIResponse;
 import com.superleague3.airdistancecalculator.POJOs.Location;
 import com.superleague3.airdistancecalculator.POJOs.Result;
 import com.superleague3.airdistancecalculator.POJOs.Coordinates;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.*;
 import org.springframework.web.bind.annotation.*;
@@ -21,13 +22,17 @@ public class AirDistanceController {
     @Value("${geocode_api_key}")
     String apiKey;
 
+    @Autowired
+    private Haversine haversine;
+
     @GetMapping("/getCoords")
     @ResponseBody
     public ResponseEntity<Location> getCoordinates(@RequestParam(name="address") String address){
-        System.out.println("Address passed in = " + address);
+        //System.out.println("Address passed in = " + address);
         Location location = new Location();
         try {
             String encodedAddress = URLEncoder.encode(address, StandardCharsets.UTF_8.toString());
+            System.out.println("address encoded = " + encodedAddress);
             RestTemplate restTemplate = new RestTemplate();
             HttpHeaders headers = new HttpHeaders();
             headers.setContentType(MediaType.APPLICATION_JSON);
@@ -48,7 +53,7 @@ public class AirDistanceController {
 
     @PostMapping("/getDistance")
     public Double getDistance(@RequestBody Coordinates coords) {
-        Haversine haversine = new Haversine();
+        //Haversine haversine = new Haversine();
         Location loc1 = coords.getLoc1();
         Location loc2 = coords.getLoc2();
         return haversine.getDistance(loc1.getLat(), loc1.getLng(), loc2.getLat(), loc2.getLng());

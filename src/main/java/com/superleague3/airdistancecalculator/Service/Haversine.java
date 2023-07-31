@@ -1,8 +1,8 @@
-package com.superleague3.airdistancecalculator.DistanceCalculation;
+package com.superleague3.airdistancecalculator.Service;
 
-import lombok.Data;
+import org.springframework.stereotype.Service;
 
-@Data
+@Service
 // Java program for the haversine formula
 public class Haversine {
 
