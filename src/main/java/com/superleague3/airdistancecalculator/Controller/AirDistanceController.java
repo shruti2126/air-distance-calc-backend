@@ -28,7 +28,7 @@ public class AirDistanceController {
     @GetMapping("/getCoords")
     @ResponseBody
     public ResponseEntity<Location> getCoordinates(@RequestParam(name="address") String address){
-        //System.out.println("Address passed in = " + address);
+
         Location location = new Location();
         try {
             String encodedAddress = URLEncoder.encode(address, StandardCharsets.UTF_8.toString());

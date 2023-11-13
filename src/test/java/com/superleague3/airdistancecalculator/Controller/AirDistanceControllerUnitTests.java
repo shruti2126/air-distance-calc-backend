@@ -1,4 +1,4 @@
-package com.superleague3.airdistancecalculator;
+package com.superleague3.airdistancecalculator.Controller;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.superleague3.airdistancecalculator.Service.Haversine;

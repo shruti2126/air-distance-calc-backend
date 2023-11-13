@@ -1,4 +1,4 @@
-package com.superleague3.airdistancecalculator;
+package com.superleague3.airdistancecalculator.Controller;
 
 import com.superleague3.airdistancecalculator.POJOs.Location;
 import com.fasterxml.jackson.databind.ObjectMapper;
@@ -41,5 +41,10 @@ public class AirDistanceControllerIntegrationTests {
         Location location = mapper.readValue(result.getResponse().getContentAsString(), Location.class);
         assertEquals(expectedLat, location.getLat());
         assertEquals(expectedLng, location.getLng());
+    }
+
+    @Test
+    public void testGetCoordinatesWithStreet() {
+        
     }
 }
