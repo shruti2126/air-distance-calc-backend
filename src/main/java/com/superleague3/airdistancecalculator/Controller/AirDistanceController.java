@@ -48,6 +48,7 @@ public class AirDistanceController {
 
         }
         ResponseEntity<Location> responseEntity = ResponseEntity.ok(location);
+        System.out.println("location : " + responseEntity);
         return responseEntity;
     }
 
